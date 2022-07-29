@@ -1,0 +1,20 @@
+1. 
+Je pense qu'il est possible d'optimiser cette bdd.
+Dans la table Cart, je supprimerai les colonnes products_ids et value et je ferai une nouvelle table qui relie les product.id aux cart.id
+
+Je changerai certains nom pour qu'ils soient plus explicites (mettre product_id, category_name etc...)
+
+2 
+SELECT * FROM Cart INNER JOIN Product ON Product.id LIKE '%' + Cart.products_ids + '%' WHERE Product.name = ‘shampoo’
+
+3.
+SELECT  User.name FROM User INNER JOIN Cart ON Cart.user_id = User.id WHERE Cart.value > 50 
+
+4.
+SELECT Category.name, Category.id FROM Category LEFT JOINT Product ON Category.id = Product.category_id WHERE Product.category_id IS NULL
+
+5.
+SELECT * FROM Cart INNER JOIN Product ON Product.id LIKE '%' +  Cart.products_ids + '%' WHERE Product.name IS NOT ‘soap’
+
+6. 
+SELECT Product.id, Product.name, count(*) FROM Product INNER JOIN Cart ON Product.id LIKE '%' +  Cart.products_ids + '%' GROUP BY Product.name
